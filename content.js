@@ -10,7 +10,16 @@
     const settings = await new Promise(resolve => chrome.storage.sync.get(defaults, resolve));
     const isBlocked = settings.blockedDomains.some(domain => window.location.hostname.includes(domain));
 
-    if (isBlocked && !window.location.href.includes('?passed=true')) {
+    // Get bypass counter from storage
+    const bypassData = await new Promise(resolve => 
+        chrome.storage.local.get(['bypassCount'], resolve)
+    );
+    const bypassCount = bypassData.bypassCount || 0;
+    
+    // Show interstitial if blocked AND (no passed param OR bypass count >= 3)
+    const shouldShowInterstitial = isBlocked && (!window.location.href.includes('?passed=true') || bypassCount >= 3);
+
+    if (shouldShowInterstitial) {
         // --- 1. Swap the Favicon ---
         const newIcon = settings.customIcon || chrome.runtime.getURL('img/skully.png');
         
@@ -104,9 +113,20 @@
         btn.onmouseup = () => { btn.style.transform = ''; };
 
         // SPA-safe dismissal: update URL without full reload and remove overlay
-        btn.onclick = () => {
+        btn.onclick = async () => {
             const url = new URL(window.location.href);
             url.searchParams.set('passed', 'true');
+            
+            // Increment bypass counter
+            const currentBypassData = await new Promise(resolve => 
+                chrome.storage.local.get(['bypassCount'], resolve)
+            );
+            const currentCount = currentBypassData.bypassCount || 0;
+            
+            // Reset counter if it was at 3 or more, otherwise increment
+            const newCount = currentCount >= 3 ? 1 : currentCount + 1;
+            await chrome.storage.local.set({ bypassCount: newCount });
+            
             try {
                 history.replaceState(null, '', url.toString());
             } catch (e) {

@@ -28,6 +28,7 @@ The Social Media Speedbump Blocker interrupts your access to distracting social 
 - 🎯 Sidebar UI - Settings now open as a persistent sidebar instead of a popup
 - ⚡ Better UX for accessing and modifying settings without losing context
 - 🎨 Optimized layout for sidebar panel display
+- **NEW!** 🔄 Smart Bypass Counter - The speedbump automatically reappears after you've bypassed it 3 times, ensuring you don't lose the benefit of intentional friction over time
 
 ## Installation
 
@@ -69,6 +70,7 @@ When you visit a blocked domain:
 2. Your custom image is displayed with your custom message
 3. A button forces you to click before proceeding
 4. After clicking, you can access the site normally (passing `?passed=true` query param)
+5. **NEW!** After bypassing the speedbump 3 times, it automatically reappears to maintain effectiveness
 
 The favicon on the tab changes to your custom icon (or the default `skully.png`), providing a visual reminder of the extension's presence.
 
