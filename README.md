@@ -1,5 +1,5 @@
 # Social Media Speedbump Blocker 
-V4 is out! Now lets you Customzize your Picture, "Helpful reminder," and add your own domain URLs
+🚨🚨 V4 is out! Now lets you Customzize your Picture, "Helpful reminder," and blocked domains 🚨🚨
 
 A Chrome extension that adds a "speedbump" to social media sites to help reduce mindless scrolling and increase intentional browsing.
 
