@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Social Media Speedbump Blocker",
+  "version": "2.2",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "options.html",
+    "default_icon": {
+      "16": "img/skully.png",
+      "32": "img/skully.png",
+      "48": "img/skully.png",
+      "128": "img/skully.png"
+    }
+  },
+  "icons": {
+    "16": "img/skully.png",
+    "32": "img/skully.png",
+    "48": "img/skully.png",
+    "128": "img/skully.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["img/dontcare.jpg", "img/fav.ico", "img/skully.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

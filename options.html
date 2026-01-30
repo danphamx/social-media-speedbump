@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speedbump Settings</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label { 
+            display: block; 
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        input[type="file"],
+        textarea { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input[type="text"]:focus,
+        input[type="file"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        button { 
+            margin-top: 30px; 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>⚡ Speedbump Settings</h2>
+        
+        <div class="form-group">
+            <label>Blocked Domains (comma separated):</label>
+            <textarea id="domains" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Custom Message:</label>
+            <input type="text" id="message" placeholder="e.g., Stop scrolling and focus!">
+        </div>
+        
+        <div class="form-group">
+            <label>Button Label:</label>
+            <input type="text" id="btnLabel" placeholder="e.g., Let me in">
+        </div>
+        
+        <div class="form-group">
+            <label>Speedbump Image (Upload):</label>
+            <input type="file" id="imgFile" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label>Tab Icon / Favicon (Upload):</label>
+            <input type="file" id="iconFile" accept="image/*">
+        </div>
+        
+        <button id="save">💾 Save Settings</button>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>
