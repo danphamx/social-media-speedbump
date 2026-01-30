@@ -37,7 +37,7 @@
                 font-family: Arial, sans-serif;
                 text-align: center;
             ">
-                <img src="${settings.customImage || chrome.runtime.getURL('img/dontcare.jpg')}" style="max-width: 80%; max-height: 50vh; border: 2px solid #333; margin-bottom: 20px;">
+                <img src="${settings.customImage || chrome.runtime.getURL('img/dontcare.jpg')}" style="max-width: 80%; max-height: 50vh; margin-bottom: 20px;">
                 <h1>${settings.customText}</h1>
                 <button id="proceed-btn" style="margin-top: 20px; padding: 15px 30px; font-size: 18px; cursor: pointer; background: #444; color: #fff; border: none; border-radius: 5px;">
                     ${settings.buttonLabel}
