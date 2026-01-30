@@ -1,7 +1,7 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 4,
   "name": "Social Media Speedbump Blocker",
-  "version": "2.2",
+  "version": "4.0",
   "permissions": ["storage"],
   "action": {
     "default_icon": {

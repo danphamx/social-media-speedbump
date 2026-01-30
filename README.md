@@ -15,11 +15,16 @@ The Social Media Speedbump Blocker interrupts your access to distracting social 
 - ✅ Add/remove domains from blocklist
 - ✅ Persistent settings via Chrome Storage Sync
 
-### V3 Features (Latest)
+### V3 Features
 - ✨ Custom favicon support - set your own tab icon
 - ✨ Default favicon now uses `skully.png` for visual impact
 - ✨ Reset extension to default settings
 - ✨ Organized assets in `/img/` folder for cleaner project structure
+
+### V4 Features (Latest)
+- 🎯 Sidebar UI - Settings now open as a persistent sidebar instead of a popup
+- ⚡ Better UX for accessing and modifying settings without losing context
+- 🎨 Optimized layout for sidebar panel display
 
 ## Installation
 
@@ -36,13 +41,14 @@ The Social Media Speedbump Blocker interrupts your access to distracting social 
 
 ## Usage
 
-1. Click the extension icon to open the settings page
+1. Click the extension icon to open the settings sidebar (appears on the right side of your browser)
 2. Configure your blocked domains (comma-separated)
 3. Customize your speedbump:
    - **Custom Message**: The text displayed on the speedbump
    - **Button Label**: Text for the "proceed" button
    - **Speedbump Image**: Upload an image to display
    - **Favicon**: Upload a custom icon for the browser tab
+4. Click **Save Settings** to apply your changes
 
 ### Default Configuration
 
@@ -66,14 +72,13 @@ The favicon on the tab changes to your custom icon (or the default `skully.png`)
 ## Files Structure
 
 ```
-├── manifest.json          # Chrome extension configuration
+├── manifest.json          # Chrome extension configuration (Manifest V3)
 ├── background.js          # Background service worker
 ├── content.js             # Content script that blocks sites
-├── options.html           # Settings page UI
-├── options.js             # Settings page logic
-├── favicon.ico            # Extension icon (not used as speedbump icon)
+├── options.html           # Settings sidebar UI
+├── options.js             # Settings sidebar logic
 ├── img/
-│   ├── skully.png         # Default favicon (V3)
+│   ├── skully.png         # Default favicon
 │   ├── dontcare.jpg       # Default speedbump image
 │   ├── fav.ico            # Alternative favicon
 │   └── icon.icns          # macOS icon
@@ -82,7 +87,7 @@ The favicon on the tab changes to your custom icon (or the default `skully.png`)
 
 ## Customization
 
-All settings are customizable through the extension popup:
+All settings are customizable through the extension sidebar (click the extension icon):
 - Domain blocklist
 - Speedbump message
 - Button text
@@ -93,6 +98,7 @@ Settings are synced across all your Chrome devices via Chrome Storage Sync.
 
 ## Version History
 
+- **V4**: Converted popup to sidebar UI for better UX
 - **V3**: Added favicon customization and reset functionality
 - **V2**: Added custom uploads for image, text, button label, and domains
 - **V1**: Basic speedbump blocker for preset domains
