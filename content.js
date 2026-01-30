@@ -36,7 +36,7 @@
             bottom: 0;
             background: rgba(0, 0, 0, 0.9);
             z-index: 999998;
-            pointer-events: none;
+            pointer-events: auto;
         `;
         document.body.appendChild(overlay);
 
@@ -83,25 +83,40 @@
         const btn = document.createElement('button');
         btn.id = 'proceed-btn';
         btn.textContent = settings.buttonLabel;
+        btn.type = 'button';
         btn.style.cssText = `
             margin-top: 20px;
-            padding: 15px 30px;
+            padding: 16px 36px;
             font-size: 18px;
             cursor: pointer;
-            background: #444;
+            background: linear-gradient(180deg,#555,#333);
             color: #fff;
             border: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+            transition: transform 0.08s ease, filter 0.12s ease;
+            -webkit-tap-highlight-color: transparent;
         `;
 
-        btn.onmouseover = () => btn.style.background = '#555';
-        btn.onmouseout = () => btn.style.background = '#444';
+        btn.onmouseover = () => { btn.style.filter = 'brightness(1.05)'; };
+        btn.onmouseout = () => { btn.style.filter = ''; };
+        btn.onmousedown = () => { btn.style.transform = 'translateY(1px)'; };
+        btn.onmouseup = () => { btn.style.transform = ''; };
 
+        // SPA-safe dismissal: update URL without full reload and remove overlay
         btn.onclick = () => {
             const url = new URL(window.location.href);
             url.searchParams.set('passed', 'true');
-            window.location.href = url.toString();
+            try {
+                history.replaceState(null, '', url.toString());
+            } catch (e) {
+                // fallback to full navigation if replaceState is not allowed
+                window.location.href = url.toString();
+                return;
+            }
+            // remove the UI so the user can continue without a reload
+            if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            if (speedbumpContainer && speedbumpContainer.parentNode) speedbumpContainer.parentNode.removeChild(speedbumpContainer);
         };
 
         // Append elements
