@@ -1,12 +1,12 @@
-// Open the side panel when the extension icon is clicked
-chrome.action.onClicked.addListener((tab) => {
-  chrome.sidePanel.open({ tabId: tab.id });
-});
+// Enable side panel to open on action toolbar click
+chrome.sidePanel
+  .setPanelBehavior({ openPanelOnActionClick: true })
+  .catch((error) => console.error('Failed to set panel behavior:', error));
 
-// Listen for messages from content.js (the floating cupcake)
+// Listen for messages from content.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'OPEN_PANEL') {
-    // Open the side panel in the current window
+    // Open the side panel for this tab
     chrome.sidePanel.open({ tabId: sender.tab.id });
   }
 });

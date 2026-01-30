@@ -72,11 +72,12 @@ The favicon on the tab changes to your custom icon (or the default `skully.png`)
 ## Files Structure
 
 ```
-├── manifest.json          # Chrome extension configuration (Manifest V3)
-├── background.js          # Background service worker
-├── content.js             # Content script that blocks sites
-├── options.html           # Settings sidebar UI
-├── options.js             # Settings sidebar logic
+├── manifest.json          # Chrome extension configuration (Manifest V3 + V4)
+├── background.js          # Background service worker (handles side panel behavior)
+├── content.js             # Content script that blocks sites and creates overlay
+├── sidepanel.html         # Side panel UI (opened via extension icon click)
+├── options.html           # Full settings page (chrome-extension://...extensions-options)
+├── options.js             # Settings logic (used by both sidepanel.html and options.html)
 ├── img/
 │   ├── skully.png         # Default favicon
 │   ├── dontcare.jpg       # Default speedbump image
@@ -84,6 +85,8 @@ The favicon on the tab changes to your custom icon (or the default `skully.png`)
 │   └── icon.icns          # macOS icon
 └── README.md              # This file
 ```
+
+**⚠️ Developer Note:** Both `sidepanel.html` and `options.html` are maintained and must stay in sync. Changes to the settings UI should be applied to both files to ensure consistency between the side panel and the full options page.
 
 ## Customization
 
