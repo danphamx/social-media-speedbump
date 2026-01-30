@@ -4,13 +4,15 @@
   "version": "2.2",
   "permissions": ["storage"],
   "action": {
-    "default_popup": "options.html",
     "default_icon": {
       "16": "img/skully.png",
       "32": "img/skully.png",
       "48": "img/skully.png",
       "128": "img/skully.png"
     }
+  },
+  "side_panel": {
+    "default_path": "options.html"
   },
   "icons": {
     "16": "img/skully.png",
