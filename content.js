@@ -90,26 +90,41 @@
 
         // Create button
         const btn = document.createElement('button');
-        btn.id = 'proceed-btn';
+        btn.id = 'speedbump-proceed-btn';
+        btn.className = 'speedbump-btn-unique';
         btn.textContent = settings.buttonLabel;
         btn.type = 'button';
         btn.style.cssText = `
-            margin-top: 20px;
-            padding: 16px 36px;
-            font-size: 18px;
-            cursor: pointer;
-            background: linear-gradient(180deg,#555,#333);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-            transition: transform 0.08s ease, filter 0.12s ease;
-            -webkit-tap-highlight-color: transparent;
+            margin-top: 20px !important;
+            padding: 16px 36px !important;
+            font-size: 18px !important;
+            cursor: pointer !important;
+            background: linear-gradient(180deg,#555,#333) !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 8px !important;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5) !important;
+            transition: transform 0.08s ease, filter 0.12s ease !important;
+            -webkit-tap-highlight-color: transparent !important;
+            font-family: Arial, sans-serif !important;
+            font-weight: normal !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            line-height: normal !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            vertical-align: baseline !important;
+            width: auto !important;
+            height: auto !important;
+            min-width: auto !important;
+            min-height: auto !important;
+            max-width: none !important;
+            max-height: none !important;
         `;
 
-        btn.onmouseover = () => { btn.style.filter = 'brightness(1.05)'; };
+        btn.onmouseover = () => { btn.style.filter = 'brightness(1.05) !important'; };
         btn.onmouseout = () => { btn.style.filter = ''; };
-        btn.onmousedown = () => { btn.style.transform = 'translateY(1px)'; };
+        btn.onmousedown = () => { btn.style.transform = 'translateY(1px) !important'; };
         btn.onmouseup = () => { btn.style.transform = ''; };
 
         // SPA-safe dismissal: update URL without full reload and remove overlay
